@@ -34,10 +34,6 @@
 
 'use strict';
 
-/**
- * Example of Require.js boostrap javascript
- */
-
 requirejs.config(
 {
   baseUrl: 'js',
@@ -67,19 +63,15 @@ requirejs.config(
 }
 );
 
-/**
- * A top-level require call executed by the Application.
- * Although 'ojcore' and 'knockout' would be loaded in any case (they are specified as dependencies
- * by the modules themselves), we are listing them explicitly to get the references to the 'oj' and 'ko'
- * objects in the callback
- */
 require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-element', 'ojs/ojmodule', 'ojs/ojrouter', 'ojs/ojbutton', 'ojs/ojknockout'],
   function (oj, ko, $, moduleUtils) { // this callback gets executed when all required modules are loaded
         // Router setup
     oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
+
     var router = oj.Router.rootInstance;
     router.configure({
       'ojet': {label: 'Oracle JET', isDefault: true },
+      'jquery': {label: 'jQuery'},
       'requirejs': {label: 'RequireJS'},
       'knockout': {label: 'Knockout'}
     });
