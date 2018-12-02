@@ -63,7 +63,7 @@ requirejs.config(
 }
 );
 
-require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-element', 'ojs/ojmodule', 'ojs/ojrouter', 'ojs/ojbutton', 'ojs/ojknockout'],
+require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-element', 'ojs/ojrouter', 'ojs/ojknockout'],
   function (oj, ko, $, moduleUtils) { // this callback gets executed when all required modules are loaded
         // Router setup
     oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
