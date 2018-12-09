@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Uniform Management of Validation</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/alta/6.0.0/web/alta.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+
+  </head>
+  <body class="oj-web-applayout-body">
+
+    <oj-validation-group id="tracker"  valid="{{groupValid}}">
+      <h3 class="oj-header-border">Contact Numbers</h3>
+      <oj-bind-for-each data="[[contactNumbers]]" as="contact">
+        <template>
+          <oj-label>
+            <oj-bind-text value='[[contact.data.type]]'></oj-bind-text>
+          </oj-label>
+          <oj-select-one value='{{contact.data.type}}' required placeholder=''>
+            <oj-option value="home">Home</oj-option>
+            <oj-option value="cell">Mobile</oj-option>
+            <oj-option value="work">Work</oj-option>
+            <oj-option value="other">Other</oj-option>
+          </oj-select-one> 
+          <a href="#" on-click="[[removeContactNumber]]"> Remove</a>
+          <br/>
+        </template>
+      </oj-bind-for-each>
+    </oj-validation-group>
+    <hr>
+    <oj-button on-oj-action="[[addContactNumber]]">Add</oj-button>
+    <oj-button on-oj-action="[[createNewMember]]">Validate</oj-button>
+    <span id="namevalid" data-bind="text: 'Global valid property: ' + groupValid()"></span>
+    
+    <script type="text/javascript" src="js/libs/require/require.js"></script>
+    <script type="text/javascript" src="js/uniform-management-of-validation.js"></script>
+
+  </body>
+</html>
