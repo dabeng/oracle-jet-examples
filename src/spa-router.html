@@ -71,7 +71,7 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojmodule-element-utils', 'ojs/
     var router = oj.Router.rootInstance;
     router.configure({
       'ojet': {label: 'Oracle JET', isDefault: true },
-      'jquery': {label: 'jQuery'},
+      'jquery/{subtitle}': {label: 'jQuery'},
       'requirejs': {label: 'RequireJS'},
       'knockout': {label: 'Knockout'}
     });
@@ -85,8 +85,8 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojmodule-element-utils', 'ojs/
       //update module config every time as router.moduleConfig mutates
       ko.computed(function() {
         var name = self.router.moduleConfig.name();
-        var viewPath = 'views/direct-between-page-sections/' + name + '.html';
-        var modelPath = 'viewModels/direct-between-page-sections/' + name;
+        var viewPath = 'views/spa-router/' + name + '.html';
+        var modelPath = 'viewModels/spa-router/' + name;
         var masterPromise = Promise.all([
           moduleUtils.createView({'viewPath':viewPath}),
           moduleUtils.createViewModel({'viewModelPath':modelPath})
