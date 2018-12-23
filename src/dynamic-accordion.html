@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Uniform Management of Validation</title>
+    <title>Dynamic Accordion</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
@@ -12,20 +12,23 @@
 
   </head>
   <body class="oj-web-applayout-body">
-
     <div id="globalBody" class="oj-web-applayout-page">
       <div role="main" class="oj-web-applayout-max-width oj-web-applayout-content">
-        <oj-accordion id="accordionPage">
+
+        <oj-button on-oj-action="[[addItem]]">Add</oj-button>
+        <oj-accordion id="myAccordion">
           <oj-bind-for-each data="[[panels]]" as="panel">
             <template>
-              <oj-collapsible expand="[[panel.data.expanded]]">
-                <span slot="header">
-                  <oj-bind-text value="[[panel.data.heading]]"></oj-bind-text>
+              <oj-collapsible expanded="[[panel.data.expanded()]]">
+                <span slot="header" class="oj-flex" on-click="[[clickHeader]]">
+                  <span class="oj-flex-item oj-sm-flex-1"><oj-bind-text value="[[panel.data.heading]]"></oj-bind-text></span>
+                  <oj-button :style.display="[[panel.data.expanded() ? '' : 'none']]" on-oj-action="[[deleteItem]]">Delete</oj-button>
                 </span>
-                <h1>Body 1</h1>
+                <h1><oj-bind-text value="[[panel.data.body]]"></oj-bind-text></h1>
               </oj-collapsible>
             </template>
         </oj-accordion>
+
       </div>
     </div>
     

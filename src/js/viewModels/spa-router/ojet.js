@@ -6,7 +6,7 @@ define(['knockout','ojs/ojbutton'],
 
       self.buttonClick = function(event){
         if (event.currentTarget.id === 'jquery') {
-          parentRouter.go('jquery/' + JSON.stringify({ 'content': 'jQuery is awesome !' }));
+          parentRouter.go('jquery/' + JSON.stringify({ 'content': 'jQuery is awesome !!!' }));
         } else {
           parentRouter.go(event.currentTarget.id);
         }

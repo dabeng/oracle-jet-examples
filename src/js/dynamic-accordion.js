@@ -27,22 +27,52 @@ requirejs.config({
     //endinjector
 });
 
-require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojaccordion'],
+require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojaccordion', 'ojs/ojbutton'],
   function(oj, ko, $) {
 
     function ViewModel() {
       var self = this;
 
       self.panels = ko.observableArray([
-        { 'heading': 'Head 1', 'expaned': false },
-        { 'heading': 'Head 2', 'expaned': false },
-        { 'heading': 'Head 3', 'expaned': false }
+        { 'heading': 'Head 1', 'body': 'Body 1', 'expanded': ko.observable(false) },
+        { 'heading': 'Head 2', 'body': 'Body 2', 'expanded': ko.observable(false) },
+        { 'heading': 'Head 3', 'body': 'Body 3', 'expanded': ko.observable(false) }
       ]);
+
+      self.clickHeader = function (event, data, bindingContext) {
+        var expanded = event.currentTarget.parentNode.expanded;
+        if (expanded) { // if collapse panel
+          data.data.expanded(!expanded); // just need to collapse current cliked item
+        } else { // if expand panel
+          bindingContext.$data.panels().forEach(function(panel, index) {
+            if (data.observableIndex() === index) {
+              panel.expanded(!expanded); // collapse current clicked item and
+            } else {
+              panel.expanded(expanded); // collapse the expanded items at the same time
+            }
+          });
+        }
+      };
+
+      self.addItem = function() {
+        var number = self.panels().length + 1;
+        self.panels().forEach(function (panel) {
+          panel.expanded(false);
+        });
+        self.panels.push({ 'heading': 'Head ' + number, 'body': 'Body ' + number, 'expanded': ko.observable(true) });
+        $('#myAccordion')[0].refresh();
+      };
+
+      self.deleteItem = function(event, data, bindingContext) {
+        self.panels.splice(data.observableIndex(), 1);
+      };
 
     }
 
     $(function() {
+
       ko.applyBindings(new ViewModel());
+
     });
 
 });
