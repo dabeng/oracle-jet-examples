@@ -1,0 +1,25 @@
+.bg-primary {
+  background-color: #007bff;
+}
+
+.bg-success {
+  background-color: #28a745;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+}
+
+.bg-warning {
+  background-color: #ffc107;
+}
+
+.bg-info {
+  background-color: #17a2b8;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}

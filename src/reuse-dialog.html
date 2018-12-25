@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Reuse Dialog</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/alta/6.0.0/web/alta.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css"/>
+
+  </head>
+  <body class="oj-web-applayout-body">
+    <div id="globalBody" class="oj-web-applayout-page">
+      <div role="main" class="oj-web-applayout-max-width oj-web-applayout-content">
+
+        <oj-button on-oj-action="[[openVue]]">Open Vue</oj-button>
+        <oj-button on-oj-action="[[openVuex]]">Open Vuex</oj-button>
+        <oj-button on-oj-action="[[openFirebase]]">Open Firebase</oj-button>
+
+        <oj-dialog style="display:none" id="modalDialog">
+          <div slot="header">
+            <oj-bind-text value="[[headerContent]]"></oj-bind-text>
+          </div>
+          <div slot="body">
+            <oj-bind-text value="[[bodyContent]]"></oj-bind-text>
+          </div>
+          <div slot="footer">
+            <oj-bind-if test="[[showOKBtn]]">
+              <oj-button on-oj-action="{{clickOKBtn}}">OK</oj-button>
+            </oj-bind-if>
+            <oj-bind-if test="[[showCancelBtn]]">
+              <oj-button on-oj-action="{{clickCancelBtn}}">Cancel</oj-button>
+            </oj-bind-if>
+          </div>
+        </oj-dialog>
+
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="js/libs/require/require.js"></script>
+    <script type="text/javascript" src="js/reuse-dialog.js"></script>
+
+  </body>
+</html>
