@@ -37,8 +37,10 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojdialog', '
         self.bodyContent = ko.observable('');
         self.showOKBtn = ko.observable(true);
         self.showCancelBtn = ko.observable(true);
-        self.clickOKBtn = function () {};
-        self.clickCancelBtn = function () {};
+        self.okBtnCaption = ko.observable('OK');
+        self.cancelBtnCaption = ko.observable('Cancel');
+        self.clickOKBtn = ko.observable();
+        self.clickCancelBtn = ko.observable();
 
         self.close = function (event) {
           document.getElementById('modalDialog').close();
@@ -49,12 +51,14 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojdialog', '
           self.bodyContent('Vue is a progressive framework for building user interfaces.');
           self.showOKBtn(true);
           self.showCancelBtn(true);
-          self.clickOKBtn = function () {
+          self.okBtnCaption('OK');
+          self.cancelBtnCaption('Cancel');
+          self.clickOKBtn(function () {
             alert('Vue is awesome!');
-          };
-          self.clickCancelBtn = function () {
+          });
+          self.clickCancelBtn(function () {
             alert('Vue is cool!');
-          };
+          });
           document.getElementById('modalDialog').open();
         }
 
@@ -63,12 +67,14 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojdialog', '
           self.bodyContent('Vuex is a state management pattern + library for Vue.js applications.');
           self.showOKBtn(true);
           self.showCancelBtn(true);
-          self.clickOKBtn = function () {
+          self.okBtnCaption('Yes');
+          self.cancelBtnCaption('No');
+          self.clickOKBtn(function () {
             alert('Vuex is awesome!');
-          };
-          self.clickCancelBtn = function () {
+          });
+          self.clickCancelBtn(function () {
             alert('Vuex is cool!');
-          };
+          });
           document.getElementById('modalDialog').open();
         }
 

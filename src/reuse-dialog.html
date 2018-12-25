@@ -27,10 +27,14 @@
           </div>
           <div slot="footer">
             <oj-bind-if test="[[showOKBtn]]">
-              <oj-button on-oj-action="{{clickOKBtn}}">OK</oj-button>
+              <oj-button on-oj-action="{{clickOKBtn}}">
+                <span><oj-bind-text value="[[okBtnCaption]]"></oj-bind-text></span>
+              </oj-button>
             </oj-bind-if>
             <oj-bind-if test="[[showCancelBtn]]">
-              <oj-button on-oj-action="{{clickCancelBtn}}">Cancel</oj-button>
+              <oj-button on-oj-action="{{clickCancelBtn}}">
+                <span><oj-bind-text value="[[cancelBtnCaption]]"></oj-bind-text></span>
+              </oj-button>
             </oj-bind-if>
           </div>
         </oj-dialog>
