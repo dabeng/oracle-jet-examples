@@ -36,10 +36,10 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojmodule-element-utils', 'ojs/
 
     var router = oj.Router.rootInstance;
     router.configure({
-      'ojet': {label: 'Oracle JET', isDefault: true },
-      'jquery/{subtitle}': {label: 'jQuery'},
-      'requirejs': {label: 'RequireJS'},
-      'knockout': {label: 'Knockout'}
+      'vue': {label: 'Vue', isDefault: true },
+      'webpack': {label: 'Webpack'},
+      'axios': {label: 'Axios'},
+      'firebase/{subtitle}': {label: 'Firebase'}
     });
 
     function ViewModel() {
