@@ -7,6 +7,10 @@ define(['knockout','ojs/ojbutton'],
       self.buttonClick = function(event){
         parentRouter.go(event.currentTarget.id);
       }
+
+      self.add = function (a, b) {
+        return a + b;
+      }
     }
     return viewModel;
   }
