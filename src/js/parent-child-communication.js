@@ -43,7 +43,7 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojmodule-element-utils', 'ojs/
           moduleUtils.createView({'viewPath':'views/parent-child-communication/child.html'}),
           moduleUtils.createViewModel({'viewModelPath':'viewModels/parent-child-communication/child'})
         ]).then(function(values){
-            var viewModel = new values[1](self.btnCaption, self.clickBtn);
+            var viewModel = new values[1]({a: self.btnCaption, b: self.clickBtn});
             // var viewModel = typeof values[1] === 'function' ? new values[1](self.router) : values[1];
             self.childConfig({'view':values[0],'viewModel':viewModel});
           },

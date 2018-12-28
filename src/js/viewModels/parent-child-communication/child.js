@@ -1,12 +1,12 @@
 define(['knockout','ojs/ojbutton'],
   function(ko)
   {
-    function ViewModel (caption, clickAction) {
+    function ViewModel (para) {
       var self = this;
 
       self.buttonClick = function(event){
-        caption('666');
-        clickAction(function() {
+        para.a('666');
+        para.b(function() {
           alert('666');
         });
       }
