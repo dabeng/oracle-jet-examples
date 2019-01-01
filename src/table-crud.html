@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Table CRUD</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
+
+    <!-- This is the main css file for the default Alta theme -->
+    <!-- injector:theme -->
+    <link rel="stylesheet" href="css/alta/6.0.0/web/alta.min.css" type="text/css"/>
+    <!-- endinjector -->
+    <!-- This contains icon fonts used by the starter template -->
+    <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css"/>
+
+    <!-- This is where you would add any app specific styling -->
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+
+  </head>
+  <body class="oj-web-applayout-body">
+    <div id="globalBody" class="oj-web-applayout-page">
+      <div role="main" class="oj-web-applayout-max-width oj-web-applayout-content">
+
+         <div id="datagrid-wrapper" class="oj-flex oj-flex-items-pad">  
+            <div class="oj-sm-12 oj-lg-6 oj-flex-item">
+            <oj-data-grid 
+                id="datagrid" 
+                style="height:400px; max-width:477px" 
+                aria-label="Data Grid CRUD Demo"
+                data="[[dataSource]]"
+                selection-mode.row="single"
+                dnd.reorder.row="enable"
+                header.column.renderer="[[oj.KnockoutTemplateUtils.getRenderer('header_template')]]"
+                header.column.style="width:100px"
+                cell.renderer="[[oj.KnockoutTemplateUtils.getRenderer('cell_template')]]"
+                cell.class-name="[[getCellClassName]]"
+            ></oj-data-grid>
+            </div>
+            <div class="oj-sm-12 oj-lg-6 oj-flex-item">  
+                <div id="form-container" class="oj-form">
+                    <oj-label for="firstNameInput">First Name</oj-label><br/>
+                    <oj-input-text id="firstNameInput" value="{{inputFirstName}}"></oj-input-text><br/>
+                    <oj-label for="lastNameInput">Last Name</oj-label><br/>
+                    <oj-input-text id="lastNameInput" value="{{inputLastName}}"></oj-input-text><br/>
+                    <oj-label for="inputHireDate">Date Hired</oj-label><br/>
+                    <oj-input-text id="inputHireDate" value="{{inputHireDate}}"></oj-input-text><br/>
+                    <oj-label for="inputSalary">Salary</oj-label><br/>
+                    <oj-input-text id="inputSalary" value="{{inputSalary}}"></oj-input-text><br/>
+                    <div class="oj-form-control-group" 
+                         aria-label="submit group" role="group">
+                        <oj-button id="addbutton" data-bind="click: add">Add</oj-button>
+                        <oj-button id="updateButton" data-bind="click: update">Update</oj-button>
+                        <oj-button id="removeButton" data-bind="click: remove">Remove</oj-button>
+                        <oj-button id="resetFields" data-bind="click: resetFields">Reset Fields</oj-button>
+                    </div>
+                </div>
+        
+        
+            </div>
+        </div>
+        
+        <script type="text/html" id="header_template">
+            <!-- ko if: $context.key=='FIRST_NAME' -->            
+                <span data-bind="text: 'First Name'"></span>
+            <!-- /ko -->
+            <!-- ko if: $context.key=='LAST_NAME' -->
+                <span data-bind="text: 'Last Name'"></span>
+            <!-- /ko -->
+            <!-- ko if: $context.key=='HIRE_DATE' -->
+                <span data-bind="text: 'Date Hired'"></span>
+            <!-- /ko -->
+            <!-- ko if: $context.key=='SALARY' -->
+                <span data-bind="text: 'Salary'"></span>
+            <!-- /ko -->
+        </script> 
+        
+        <script type="text/html" id="cell_template">
+            <!-- ko if: ($context.keys.column=='FIRST_NAME' || $context.keys.column=='LAST_NAME') -->
+                <span data-bind="text: $context.data"></span>
+            <!-- /ko -->
+            <!-- ko if: $context.keys.column=='HIRE_DATE' -->
+                <span data-bind="text: $parent.dateConverter.format($context.data)">
+                </span>
+            <!-- /ko -->
+            <!-- ko if: $context.keys.column=='SALARY' -->
+                <span data-bind="text: $parent.salaryConverter.format($context.data)">
+                </span>
+            <!-- /ko -->
+        </script>
+
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="js/libs/require/require.js"></script>
+    <script type="text/javascript" src="js/table-crud.js"></script>
+
+  </body>
+
+</html>
