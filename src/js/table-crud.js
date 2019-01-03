@@ -49,7 +49,7 @@ function(oj, ko, $)
         
       self.collection = new oj.Collection(null, {
         model: new oj.Model.extend({idAttribute: 'EMPLOYEE_ID'}),
-        url: 'cookbook/commonModel/crud/CRUDGrid/employeeData.json'
+        url: 'js/employeeData.json'
       });        
         
       self.dataSource = new oj.CollectionDataGridDataSource(
