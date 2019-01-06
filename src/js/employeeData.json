@@ -7,7 +7,7 @@
         "PHONE_NUMBER": "515.123.4567",
         "HIRE_DATE": "1987-06-17",
         "SALARY": 24000,
-        "DEPARTMENT_ID": 90
+        "DEPARTMENT_ID": 10
     },
     {
         "EMPLOYEE_ID": 101,
@@ -17,7 +17,7 @@
         "PHONE_NUMBER": "515.123.4568",
         "HIRE_DATE": "1989-09-21",
         "SALARY": 17000,
-        "DEPARTMENT_ID": 90
+        "DEPARTMENT_ID": 20
     },
     {
         "EMPLOYEE_ID": 102,
@@ -27,7 +27,7 @@
         "PHONE_NUMBER": "515.123.4569",
         "HIRE_DATE": "1993-01-13",
         "SALARY": 17000,
-        "DEPARTMENT_ID": 90
+        "DEPARTMENT_ID": 30
     },
     {
         "EMPLOYEE_ID": 103,
@@ -37,7 +37,7 @@
         "PHONE_NUMBER": "590.423.4567",
         "HIRE_DATE": "1990-01-03",
         "SALARY": 9000,
-        "DEPARTMENT_ID": 60
+        "DEPARTMENT_ID": 40
     },
     {
         "EMPLOYEE_ID": 104,
@@ -47,7 +47,7 @@
         "PHONE_NUMBER": "590.423.4568",
         "HIRE_DATE": "1991-05-21",
         "SALARY": 6000,
-        "DEPARTMENT_ID": 60
+        "DEPARTMENT_ID": 50
     },
     {
         "EMPLOYEE_ID": 105,
@@ -67,7 +67,7 @@
         "PHONE_NUMBER": "590.423.4560",
         "HIRE_DATE": "1998-02-05",
         "SALARY": 4800,
-        "DEPARTMENT_ID": 60
+        "DEPARTMENT_ID": 70
     },
     {
         "EMPLOYEE_ID": 107,
@@ -77,7 +77,7 @@
         "PHONE_NUMBER": "590.423.5567",
         "HIRE_DATE": "1999-02-07",
         "SALARY": 4200,
-        "DEPARTMENT_ID": 60
+        "DEPARTMENT_ID": 80
     },
     {
         "EMPLOYEE_ID": 108,
@@ -87,7 +87,7 @@
         "PHONE_NUMBER": "515.124.4569",
         "HIRE_DATE": "1994-08-17",
         "SALARY": 12000,
-        "DEPARTMENT_ID": 100
+        "DEPARTMENT_ID": 90
     },
     {
         "EMPLOYEE_ID": 109,
@@ -117,7 +117,7 @@
         "PHONE_NUMBER": "515.124.4369",
         "HIRE_DATE": "1997-09-30",
         "SALARY": 7700,
-        "DEPARTMENT_ID": 100
+        "DEPARTMENT_ID": 90
     },
     {
         "EMPLOYEE_ID": 112,
@@ -127,7 +127,7 @@
         "PHONE_NUMBER": "515.124.4469",
         "HIRE_DATE": "1998-03-07",
         "SALARY": 7800,
-        "DEPARTMENT_ID": 100
+        "DEPARTMENT_ID": 80
     },
     {
         "EMPLOYEE_ID": 113,
@@ -137,7 +137,7 @@
         "PHONE_NUMBER": "515.124.4567",
         "HIRE_DATE": "1999-12-07",
         "SALARY": 6900,
-        "DEPARTMENT_ID": 100
+        "DEPARTMENT_ID": 70
     },
     {
         "EMPLOYEE_ID": 114,
@@ -147,7 +147,7 @@
         "PHONE_NUMBER": "515.127.4561",
         "HIRE_DATE": "1994-12-07",
         "SALARY": 11000,
-        "DEPARTMENT_ID": 30
+        "DEPARTMENT_ID": 60
     },
     {
         "EMPLOYEE_ID": 115,
@@ -157,7 +157,7 @@
         "PHONE_NUMBER": "515.127.4562",
         "HIRE_DATE": "1995-05-18",
         "SALARY": 3100,
-        "DEPARTMENT_ID": 30
+        "DEPARTMENT_ID": 50
     },
     {
         "EMPLOYEE_ID": 116,
@@ -167,7 +167,7 @@
         "PHONE_NUMBER": "515.127.4563",
         "HIRE_DATE": "1997-12-24",
         "SALARY": 2900,
-        "DEPARTMENT_ID": 30
+        "DEPARTMENT_ID": 40
     },
     {
         "EMPLOYEE_ID": 117,
@@ -187,7 +187,7 @@
         "PHONE_NUMBER": "515.127.4565",
         "HIRE_DATE": "1998-11-15",
         "SALARY": 2600,
-        "DEPARTMENT_ID": 30
+        "DEPARTMENT_ID": 20
     },
     {
         "EMPLOYEE_ID": 119,
@@ -197,7 +197,7 @@
         "PHONE_NUMBER": "515.127.4566",
         "HIRE_DATE": "1999-08-10",
         "SALARY": 2500,
-        "DEPARTMENT_ID": 30
+        "DEPARTMENT_ID": 10
     },
     {
         "EMPLOYEE_ID": 120,
@@ -207,6 +207,6 @@
         "PHONE_NUMBER": "650.123.1234",
         "HIRE_DATE": "1996-07-18",
         "SALARY": 8000,
-        "DEPARTMENT_ID": 50
+        "DEPARTMENT_ID": 10
     }
 ]

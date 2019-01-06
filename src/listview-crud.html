@@ -14,8 +14,11 @@
     <!-- This contains icon fonts used by the starter template -->
     <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css"/>
 
-    <!-- This is where you would add any app specific styling -->
-    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+    <style type="text/css">
+      .oj-flex-item > .oj-flex:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    </style>
 
   </head>
   <body class="oj-web-applayout-body">
@@ -26,7 +29,35 @@
           <div class="oj-sm-12 oj-lg-6 oj-flex-item">
             <oj-list-view id="listview" aria-label="list using collection" data="[[dataSource]]">
               <template slot="itemTemplate">
-                <span><oj-bind-text value="[[$current.data.FIRST_NAME]]"></oj-bind-text></span>
+                <div class="oj-flex oj-flex-items-pad">
+                  <div class="oj-flex-item oj-sm-flex-initial">
+                    <img src="images/oracle.gif" alt="avatar"/>
+                  </div>
+                  <div class="oj-flex-item">
+                    <div class="oj-flex oj-sm-flex-direction-column">
+                      <div class="oj-flex-item">
+                        <div class="oj-flex oj-sm-flex-items-initial oj-sm-justify-content-space-between">
+                          <div class="oj-flex-item">
+                            <strong><oj-bind-text value="[[$current.data.LAST_NAME]]"></oj-bind-text></strong>
+                            <strong><oj-bind-text value="[[$current.data.FIRST_NAME]]"></oj-bind-text></strong>
+                          </div>
+                          <div class="oj-flex-item">
+                            <span><oj-bind-text value="[[getDeptName($current.data.DEPARTMENT_ID)]]"></oj-bind-text></span>
+                          </div>
+                      </div>
+                      <div class="oj-flex-item">
+                        <div class="oj-flex oj-sm-flex-items-initial oj-sm-justify-content-space-between">
+                          <div class="oj-flex-item">
+                            <span>Joined: <oj-bind-text value="[[dateConverter.format($current.data.HIRE_DATE)]]"></oj-bind-text></span>
+                          </div>
+                          <div class="oj-flex-item">
+                            <span>Salary: <oj-bind-text value="[[salaryConverter.format($current.data.SALARY)]]"></oj-bind-text></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </template>
             </oj-list-view>
           </div>

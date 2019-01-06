@@ -33,20 +33,46 @@ function(oj, ko, $)
     function viewModel()
     {
       var self = this;
-      var dateOptions = {formatType: 'date', dateFormat: 'medium'};
-      var dateConverterFactory = oj.Validation.converterFactory("datetime");
-      self.dateConverter = dateConverterFactory.createConverter(dateOptions);        
-        
-      var salaryOptions = {
-        style: "currency",
-        currency: "USD",
-        currencyDisplay: "symbol"
+
+      self.dateConverter = oj.Validation.converterFactory("datetime").createConverter({ formatStyle: 'date', dateFormat: 'medium' });
+      self.salaryConverter = oj.Validation.converterFactory('number').createConverter({ style: 'currency', currency: 'USD' });        
+      self.getDeptName = function (deptId) {
+        var deptName = '';
+        switch (deptId) {
+          case 10:
+            deptName = 'Administration';
+            break;
+          case 20:
+            deptName = 'Marketing';
+            break;
+          case 30:
+            deptName = 'Transportation';
+            break;
+          case 40:
+            deptName = 'Shipping';
+            break;
+          case 50:
+            deptName = 'Human Resources';
+            break;
+          case 60:
+            deptName = 'Operations';
+            break;
+          case 70:
+            deptName = 'Inventory';
+            break;
+          case 80:
+            deptName = 'Sales';
+            break;
+          case 90:
+            deptName = 'Finance';
+            break;
+          case 100:
+            deptName = 'Control and Credit';
+            break;
+        }
+        return deptName;
       };
-      var salaryConverterFactory = 
-            oj.Validation.converterFactory("number");
-      self.salaryConverter = 
-            salaryConverterFactory.createConverter(salaryOptions);        
-        
+
       self.collection = new oj.Collection(null, {
         model: new oj.Model.extend({idAttribute: 'EMPLOYEE_ID'}),
         url: 'js/employeeData.json'
