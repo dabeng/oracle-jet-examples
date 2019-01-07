@@ -46,28 +46,13 @@ function(oj, ko, $)
             deptName = 'Marketing';
             break;
           case 30:
-            deptName = 'Transportation';
+            deptName = 'Sales';
             break;
           case 40:
-            deptName = 'Shipping';
+            deptName = 'Finance';
             break;
           case 50:
             deptName = 'Human Resources';
-            break;
-          case 60:
-            deptName = 'Operations';
-            break;
-          case 70:
-            deptName = 'Inventory';
-            break;
-          case 80:
-            deptName = 'Sales';
-            break;
-          case 90:
-            deptName = 'Finance';
-            break;
-          case 100:
-            deptName = 'Control and Credit';
             break;
         }
         return deptName;
@@ -77,7 +62,6 @@ function(oj, ko, $)
         model: new oj.Model.extend({idAttribute: 'EMPLOYEE_ID'}),
         url: 'js/employeeData.json'
       });        
-        
       self.dataSource = ko.observable(new oj.CollectionTableDataSource(self.collection));
 
       var sortCriteria = {
@@ -87,10 +71,28 @@ function(oj, ko, $)
         'salAsc': { 'key': 'SALARY', 'direction': 'ascending' },
         'salDesc': { 'key': 'SALARY', 'direction': 'descending' }
       };
-      this.currentSort = ko.observable('employeeId');
+      this.currentSort = ko.observable('default');
       self.sortList = function () {
-        self.dataSource().sort(sortCriteria[event.detail.value]);
-      };   
+        self.dataSource().sort(sortCriteria[self.currentSort()]);
+      };
+
+      this.currentFilter = ko.observable('');
+      var originalCollection = self.collection;
+      function filterFunc (model) {
+        return model.get('DEPARTMENT_ID') === parseInt(self.currentFilter());
+      }
+      this.filterList = function(event, ui) {      
+        if (self.currentFilter() === 'all') {
+          self.collection = originalCollection;
+        } else {
+          self.collection = new oj.Collection(originalCollection.filter(filterFunc));
+        }
+        self.dataSource(new oj.CollectionTableDataSource(self.collection));
+
+        if (self.currentSort() !== 'default') {
+          self.dataSource().sort(sortCriteria[self.currentSort()]);
+        }
+      };
 
       // var nextKey = 121;        
 

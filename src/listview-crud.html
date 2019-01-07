@@ -35,6 +35,15 @@
               <oj-option value="salAsc">Salary &uparrow;</oj-option>
               <oj-option value="salDesc">Salary &downarrow;</oj-option>
             </oj-select-one>
+            <oj-label for="filterBy" class="oj-label-inline">Filter by dept:</oj-label>
+            <oj-select-one id="filterBy" value="{{currentFilter}}" on-value-changed="[[filterList]]">
+              <oj-option value="all">All</oj-option>
+              <oj-option value="10">Administration</oj-option>
+              <oj-option value="20">Marketing</oj-option>
+              <oj-option value="30">Sales</oj-option>
+              <oj-option value="40">Finance</oj-option>
+              <oj-option value="50">Human Resources</oj-option>
+            </oj-select-one>
             <oj-list-view id="listview" aria-label="list using collection" data="[[dataSource]]">
               <template slot="itemTemplate">
                 <div class="oj-flex oj-flex-items-pad">
