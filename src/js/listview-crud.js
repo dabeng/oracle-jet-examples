@@ -27,7 +27,7 @@ requirejs.config({
     //endinjector
 });
 
-require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojcollectiontabledatasource', 'ojs/ojinputtext', 'ojs/ojinputnumber', 'ojs/ojdatetimepicker'],
+require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojcollectiontabledatasource', 'ojs/ojinputtext', 'ojs/ojinputnumber', 'ojs/ojdatetimepicker', 'ojs/ojselectcombobox'],
 function(oj, ko, $)
 {
     function viewModel()
@@ -78,7 +78,19 @@ function(oj, ko, $)
         url: 'js/employeeData.json'
       });        
         
-      self.dataSource = new oj.CollectionTableDataSource(self.collection);        
+      self.dataSource = ko.observable(new oj.CollectionTableDataSource(self.collection));
+
+      var sortCriteria = {
+        'default': { 'key': 'EMPLOYEE_ID', 'direction': 'ascending' },
+        'hdAsc': { 'key': 'HIRE_DATE', 'direction': 'ascending' },
+        'hdDesc': { 'key': 'HIRE_DATE', 'direction': 'descending' },
+        'salAsc': { 'key': 'SALARY', 'direction': 'ascending' },
+        'salDesc': { 'key': 'SALARY', 'direction': 'descending' }
+      };
+      this.currentSort = ko.observable('employeeId');
+      self.sortList = function () {
+        self.dataSource().sort(sortCriteria[event.detail.value]);
+      };   
 
       // var nextKey = 121;        
 
