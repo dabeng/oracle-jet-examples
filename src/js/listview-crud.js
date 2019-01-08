@@ -71,17 +71,17 @@ function(oj, ko, $)
         'salAsc': { 'key': 'SALARY', 'direction': 'ascending' },
         'salDesc': { 'key': 'SALARY', 'direction': 'descending' }
       };
-      this.currentSort = ko.observable('default');
+      self.currentSort = ko.observable('default');
       self.sortList = function () {
         self.dataSource().sort(sortCriteria[self.currentSort()]);
       };
 
-      this.currentFilter = ko.observable('');
+      self.currentFilter = ko.observable('');
       var originalCollection = self.collection;
       function filterFunc (model) {
         return model.get('DEPARTMENT_ID') === parseInt(self.currentFilter());
       }
-      this.filterList = function(event, ui) {      
+      self.filterList = function(event, ui) {      
         if (self.currentFilter() === 'all') {
           self.collection = originalCollection;
         } else {
@@ -92,6 +92,15 @@ function(oj, ko, $)
         if (self.currentSort() !== 'default') {
           self.dataSource().sort(sortCriteria[self.currentSort()]);
         }
+      };
+
+      self.nameFilter = function(model, attr, value) {
+            var name = model.get("FIRST_NAME");
+            return (name.toLowerCase().indexOf(value.toLowerCase()) > -1);
+      };
+      self.searchList = function(event, ui) {
+        var filter = event.detail.value;
+        self.dataSource(new oj.CollectionTableDataSource(self.collection.whereToCollection({ 'FIRST_NAME':{value:filter, comparator:self.nameFilter }})));
       };
 
       // var nextKey = 121;        

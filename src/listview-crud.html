@@ -44,6 +44,8 @@
               <oj-option value="40">Finance</oj-option>
               <oj-option value="50">Human Resources</oj-option>
             </oj-select-one>
+            <oj-label for="nameKeyword" class="oj-label-inline">Search name:</oj-label>
+            <oj-input-text id="nameKeyword" on-value-changed="[[searchList]]"></oj-input-text>
             <oj-list-view id="listview" aria-label="list using collection" data="[[dataSource]]">
               <template slot="itemTemplate">
                 <div class="oj-flex oj-flex-items-pad">
