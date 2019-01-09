@@ -94,13 +94,12 @@ function(oj, ko, $)
         }
       };
 
-      self.nameFilter = function(model, attr, value) {
-            var name = model.get("FIRST_NAME");
-            return (name.toLowerCase().indexOf(value.toLowerCase()) > -1);
+      self.currentSearch = ko.observable('');
+      function nameFilter (model, attr, value) {
+        return model.get('NAME').toLowerCase().indexOf(value.toLowerCase()) > -1;
       };
       self.searchList = function(event, ui) {
-        var filter = event.detail.value;
-        self.dataSource(new oj.CollectionTableDataSource(self.collection.whereToCollection({ 'FIRST_NAME':{value:filter, comparator:self.nameFilter }})));
+        self.dataSource(new oj.CollectionTableDataSource(self.collection.whereToCollection({ 'NAME':{ 'value': self.currentSearch(), 'comparator': nameFilter }})));
       };
 
       // var nextKey = 121;        
