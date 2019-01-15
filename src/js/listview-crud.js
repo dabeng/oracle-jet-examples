@@ -27,8 +27,9 @@ requirejs.config({
     //endinjector
 });
 
-require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojcollectiontabledatasource', 'ojs/ojinputtext', 'ojs/ojinputnumber', 'ojs/ojdatetimepicker', 'ojs/ojselectcombobox'],
-function(oj, ko, $)
+require(['ojs/ojcore', 'knockout', 'jquery', 'MockPagingRESTServer', 'mockjax', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojmodel',
+  'ojs/ojcollectiontabledatasource', 'ojs/ojinputtext', 'ojs/ojinputnumber', 'ojs/ojdatetimepicker', 'ojs/ojselectcombobox'],
+function(oj, ko, $, MockPagingRESTServer)
 {
     function viewModel()
     {
@@ -60,46 +61,65 @@ function(oj, ko, $)
 
       self.collection = new oj.Collection(null, {
         model: new oj.Model.extend({idAttribute: 'EMPLOYEE_ID'}),
-        url: 'js/employeeData.json'
+        customURL: function () {
+          return {
+            url: 'http://localhost:3000/employees',
+            data: {
+              _start: 0,
+              _limit: 5
+            }
+          }
+        }
       });        
       self.dataSource = ko.observable(new oj.CollectionTableDataSource(self.collection));
+      // self.collection = null;
+      // self.dataSource = ko.observable();
+      // $.getJSON('js/employeeData.json',function (data) {
+      //   var server = new MockPagingRESTServer({ 'Employees': data}, { collProp: 'Employees', id: 'EMPLOYEE_ID', responseTime: 1000});
+      //   self.collection = new oj.Collection(null, {
+      //     url: server.getURL(),
+      //     fetchSize: 5,
+      //     model: new oj.Model.extend({idAttribute: 'EMPLOYEE_ID'}),
+      //   });
+      //   self.dataSource(new oj.CollectionTableDataSource(self.collection));
+      // });
 
-      var sortCriteria = {
-        'default': { 'key': 'EMPLOYEE_ID', 'direction': 'ascending' },
-        'hdAsc': { 'key': 'HIRE_DATE', 'direction': 'ascending' },
-        'hdDesc': { 'key': 'HIRE_DATE', 'direction': 'descending' },
-        'salAsc': { 'key': 'SALARY', 'direction': 'ascending' },
-        'salDesc': { 'key': 'SALARY', 'direction': 'descending' }
-      };
-      self.currentSort = ko.observable('default');
-      self.sortList = function () {
-        self.dataSource().sort(sortCriteria[self.currentSort()]);
-      };
+      // var sortCriteria = {
+      //   'default': { 'key': 'EMPLOYEE_ID', 'direction': 'ascending' },
+      //   'hdAsc': { 'key': 'HIRE_DATE', 'direction': 'ascending' },
+      //   'hdDesc': { 'key': 'HIRE_DATE', 'direction': 'descending' },
+      //   'salAsc': { 'key': 'SALARY', 'direction': 'ascending' },
+      //   'salDesc': { 'key': 'SALARY', 'direction': 'descending' }
+      // };
+      // self.currentSort = ko.observable('default');
+      // self.sortList = function () {
+      //   self.dataSource().sort(sortCriteria[self.currentSort()]);
+      // };
 
-      self.currentFilter = ko.observable('');
-      var originalCollection = self.collection;
-      function filterFunc (model) {
-        return model.get('DEPARTMENT_ID') === parseInt(self.currentFilter());
-      }
-      self.filterList = function(event, ui) {      
-        if (self.currentFilter() === 'all') {
-          self.collection = originalCollection;
-        } else {
-          self.collection = new oj.Collection(originalCollection.filter(filterFunc));
-        }
-        self.dataSource(new oj.CollectionTableDataSource(self.collection));
+      // self.currentFilter = ko.observable('');
+      // var originalCollection = self.collection;
+      // function filterFunc (model) {
+      //   return model.get('DEPARTMENT_ID') === parseInt(self.currentFilter());
+      // }
+      // self.filterList = function(event, ui) {      
+      //   if (self.currentFilter() === 'all') {
+      //     self.collection = originalCollection;
+      //   } else {
+      //     self.collection = new oj.Collection(originalCollection.filter(filterFunc));
+      //   }
+      //   self.dataSource(new oj.CollectionTableDataSource(self.collection));
 
-        if (self.currentSort() !== 'default') {
-          self.dataSource().sort(sortCriteria[self.currentSort()]);
-        }
-      };
+      //   if (self.currentSort() !== 'default') {
+      //     self.dataSource().sort(sortCriteria[self.currentSort()]);
+      //   }
+      // };
 
       self.currentSearch = ko.observable('');
-      function nameFilter (model, attr, value) {
+      self.nameFilter = function (model, attr, value) {
         return model.get('NAME').toLowerCase().indexOf(value.toLowerCase()) > -1;
       };
       self.searchList = function(event, ui) {
-        self.dataSource(new oj.CollectionTableDataSource(self.collection.whereToCollection({ 'NAME':{ 'value': self.currentSearch(), 'comparator': nameFilter }})));
+        self.dataSource(new oj.CollectionTableDataSource(self.collection.whereToCollection({ 'NAME':{ 'value': self.currentSearch(), 'comparator': self.nameFilter }})));
       };
 
       // var nextKey = 121;        
