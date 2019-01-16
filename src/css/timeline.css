@@ -1,0 +1,60 @@
+#listview {
+    padding-left: 15px;
+}
+
+#listview>ul {
+    position: relative;
+}
+
+#listview>ul:before {
+    content: "";
+    border-left: 2px solid #CCC;
+    left: -6px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+
+#listview>ul>li {
+    padding: 10px;
+    position: relative;
+    border-top: 0;
+    background: none;
+}
+
+#listview>ul>li:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -11px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 3px solid #ccc;
+}
+
+#listview>ul>li:first-child:before {
+    border-color: #007bff;
+}
+
+#listview>ul>li:first-child:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -6px;
+    width: 2px;
+    height: 10px;
+    background-color: #fff;
+}
+
+#listview>ul>li:last-child:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: -6px;
+    width: 2px;
+    height: calc(100% - 21px);
+    background-color: #fff;
+}
