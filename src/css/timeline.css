@@ -17,7 +17,6 @@
 }
 
 #listview>ul>li {
-    padding: 10px;
     position: relative;
     border-top: 0;
     background: none;
@@ -26,7 +25,7 @@
 #listview>ul>li:before {
     content: "";
     position: absolute;
-    top: 10px;
+    top: 12px;
     left: -11px;
     width: 5px;
     height: 5px;
@@ -45,7 +44,7 @@
     top: 0px;
     left: -6px;
     width: 2px;
-    height: 10px;
+    height: 12px;
     background-color: #fff;
 }
 
@@ -55,6 +54,6 @@
     bottom: 0px;
     left: -6px;
     width: 2px;
-    height: calc(100% - 21px);
+    height: calc(100% - 23px);
     background-color: #fff;
 }

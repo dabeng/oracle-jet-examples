@@ -27,9 +27,9 @@ requirejs.config({
     //endinjector
 });
 
-require(['ojs/ojcore', 'knockout', 'jquery', 'MockPagingRESTServer', 'mockjax', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojmodel',
+require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojmodel', 'ojs/ojrefresher',
   'ojs/ojcollectiontabledatasource', 'ojs/ojinputtext', 'ojs/ojinputnumber', 'ojs/ojdatetimepicker', 'ojs/ojselectcombobox'],
-function(oj, ko, $, MockPagingRESTServer)
+function(oj, ko, $)
 {
     function viewModel()
     {
@@ -65,13 +65,18 @@ function(oj, ko, $, MockPagingRESTServer)
           return {
             url: 'http://localhost:3000/employees',
             data: {
-              _start: 0,
+              _start: self.collection.length,
               _limit: 5
             }
           }
         }
       });        
       self.dataSource = ko.observable(new oj.CollectionTableDataSource(self.collection));
+      self.loadMore = function () {
+        self.collection.fetch({
+          add: true,
+        });         
+      };
       // self.collection = null;
       // self.dataSource = ko.observable();
       // $.getJSON('js/employeeData.json',function (data) {
