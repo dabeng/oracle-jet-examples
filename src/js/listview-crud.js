@@ -22,7 +22,7 @@ requirejs.config({
     'customElements': 'libs/webcomponents/custom-elements.min',
     'proj4': 'libs/proj4js/dist/proj4-src',
     'css': 'libs/require-css/css',
-    'touchr': 'libs/touchr/touchr'
+    'touchr': 'libs/touchr/touchr',
   }
     //endinjector
 });
@@ -68,6 +68,7 @@ function(oj, ko, $, ArrayDataProvider)
       self.collection = new oj.Collection(null, {
         model: new oj.Model.extend({idAttribute: 'EMPLOYEE_ID'}),
         fetchSize: 5,
+        url: 'http://localhost:3000/employees',
         customURL: function () {
           return {
             url: 'http://localhost:3000/employees',
@@ -104,10 +105,18 @@ function(oj, ko, $, ArrayDataProvider)
     ], { keyAttributes: 'value' });
     self.salary = ko.observable(0);
 
+    function uuidv4() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+    }
+
+
     //build a new model from the observables in the form
     self.buildModel = function () {
       return {
-        'EMPLOYEE_ID': self.employeeID(),
+        'EMPLOYEE_ID': uuidv4(),
         'NAME': self.name(),
         'HIRE_DATE': self.hireDate(),
         'SALARY': self.salary(),
@@ -118,14 +127,9 @@ function(oj, ko, $, ArrayDataProvider)
     //add the model to the collection 
     self.add = function () {
       var model = self.buildModel();
-      if (self.inputEmployeeID() === nextKey)
-      {
-        nextKey+=1;
-        self.inputEmployeeID(nextKey);
-      }
-      collection.create(model, {wait:true}).then(function() {
+      self.collection.create(model, {wait:true, at:0}).then(function() {
         // Jump to last page to show
-        element.lastPage();
+        var a = 1;
       });
     };
 

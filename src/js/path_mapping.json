@@ -219,6 +219,21 @@
         "path": "libs/require-css/css.min.js",
         "cdnPath": "require-css/css.min"
       }
+    },
+
+    "uuid": {
+      "cdn": "3rdparty",
+      "cwd": "node_modules/uuid",
+      "debug": {
+        "src":  ["v4.js"],
+        "path": "libs/uuid/v4.js",
+        "cdnPath": ""
+      },
+      "release": {
+        "src": ["v4.js"],
+        "path": "libs/uuid/v4.min.js",
+        "cdnPath": ""
+      }
     }
   }
 } 
