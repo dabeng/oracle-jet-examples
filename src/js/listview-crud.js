@@ -27,16 +27,22 @@ requirejs.config({
     //endinjector
 });
 
-require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojmodel', 'ojs/ojrefresher',
+require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojarraydataprovider', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojmodel',
   'ojs/ojcollectiontabledatasource', 'ojs/ojinputtext', 'ojs/ojinputnumber', 'ojs/ojdatetimepicker', 'ojs/ojselectcombobox'],
-function(oj, ko, $)
+function(oj, ko, $, ArrayDataProvider)
 {
     function viewModel()
     {
       var self = this;
 
-      self.dateConverter = oj.Validation.converterFactory("datetime").createConverter({ formatStyle: 'date', dateFormat: 'medium' });
-      self.salaryConverter = oj.Validation.converterFactory('number').createConverter({ style: 'currency', currency: 'USD' });        
+      self.dateConverter = oj.Validation.converterFactory('datetime').createConverter({ formatStyle: 'date', dateFormat: 'medium' });
+      self.formatDate = function (dateStr) {
+        return self.dateConverter.format(oj.IntlConverterUtils.dateToLocalIso(new Date(dateStr)));
+      };
+      self.salaryConverter = oj.Validation.converterFactory('number').createConverter({ style: 'currency', currency: 'USD' });
+      self.formatSalary = function (numberStr) {
+        return self.salaryConverter.format(numberStr);
+      };   
       self.getDeptName = function (deptId) {
         var deptName = '';
         switch (deptId) {
@@ -61,6 +67,7 @@ function(oj, ko, $)
 
       self.collection = new oj.Collection(null, {
         model: new oj.Model.extend({idAttribute: 'EMPLOYEE_ID'}),
+        fetchSize: 5,
         customURL: function () {
           return {
             url: 'http://localhost:3000/employees',
@@ -72,11 +79,63 @@ function(oj, ko, $)
         }
       });        
       self.dataSource = ko.observable(new oj.CollectionTableDataSource(self.collection));
-      self.loadMore = function () {
-        self.collection.fetch({
-          add: true,
-        });         
+
+      self.collection.bind('request', function() {
+        console.log('request more data');
+      });
+
+      self.collection.bind('sync', function() {
+        console.log('sync');
+      });
+
+      self.collection.bind('ready', function() {
+        console.log('ready');
+      });
+
+    self.name = ko.observable('');
+    self.hireDate = ko.observable(oj.IntlConverterUtils.dateToLocalIso(new Date()));
+    this.department = ko.observable(30);
+    this.deptOptions = new ArrayDataProvider([
+      {value: 10, label: 'Administration'},
+      {value: 20, label: 'Marketing'},
+      {value: 30, label: 'Sales'},
+      {value: 40, label: 'Finance'},
+      {value: 50, label: 'Human Resources'}
+    ], { keyAttributes: 'value' });
+    self.salary = ko.observable(0);
+
+    //build a new model from the observables in the form
+    self.buildModel = function () {
+      return {
+        'EMPLOYEE_ID': self.employeeID(),
+        'NAME': self.name(),
+        'HIRE_DATE': self.hireDate(),
+        'SALARY': self.salary(),
+        'DEPARTMENT_ID': self.department()
       };
+    };
+
+    //add the model to the collection 
+    self.add = function () {
+      var model = self.buildModel();
+      if (self.inputEmployeeID() === nextKey)
+      {
+        nextKey+=1;
+        self.inputEmployeeID(nextKey);
+      }
+      collection.create(model, {wait:true}).then(function() {
+        // Jump to last page to show
+        element.lastPage();
+      });
+    };
+
+    self.update = function () {
+
+    };
+
+    self.remove = function () {
+
+    }
       // self.collection = null;
       // self.dataSource = ko.observable();
       // $.getJSON('js/employeeData.json',function (data) {
@@ -89,35 +148,35 @@ function(oj, ko, $)
       //   self.dataSource(new oj.CollectionTableDataSource(self.collection));
       // });
 
-      // var sortCriteria = {
-      //   'default': { 'key': 'EMPLOYEE_ID', 'direction': 'ascending' },
-      //   'hdAsc': { 'key': 'HIRE_DATE', 'direction': 'ascending' },
-      //   'hdDesc': { 'key': 'HIRE_DATE', 'direction': 'descending' },
-      //   'salAsc': { 'key': 'SALARY', 'direction': 'ascending' },
-      //   'salDesc': { 'key': 'SALARY', 'direction': 'descending' }
-      // };
-      // self.currentSort = ko.observable('default');
-      // self.sortList = function () {
-      //   self.dataSource().sort(sortCriteria[self.currentSort()]);
-      // };
+      var sortCriteria = {
+        'default': { 'key': 'EMPLOYEE_ID', 'direction': 'ascending' },
+        'hdAsc': { 'key': 'HIRE_DATE', 'direction': 'ascending' },
+        'hdDesc': { 'key': 'HIRE_DATE', 'direction': 'descending' },
+        'salAsc': { 'key': 'SALARY', 'direction': 'ascending' },
+        'salDesc': { 'key': 'SALARY', 'direction': 'descending' }
+      };
+      self.currentSort = ko.observable('default');
+      self.sortList = function () {
+        self.dataSource().sort(sortCriteria[self.currentSort()]);
+      };
 
-      // self.currentFilter = ko.observable('');
-      // var originalCollection = self.collection;
-      // function filterFunc (model) {
-      //   return model.get('DEPARTMENT_ID') === parseInt(self.currentFilter());
-      // }
-      // self.filterList = function(event, ui) {      
-      //   if (self.currentFilter() === 'all') {
-      //     self.collection = originalCollection;
-      //   } else {
-      //     self.collection = new oj.Collection(originalCollection.filter(filterFunc));
-      //   }
-      //   self.dataSource(new oj.CollectionTableDataSource(self.collection));
+      self.currentFilter = ko.observable('');
+      var originalCollection = self.collection;
+      function filterFunc (model) {
+        return model.get('DEPARTMENT_ID') === parseInt(self.currentFilter());
+      }
+      self.filterList = function(event, ui) {      
+        if (self.currentFilter() === 'all') {
+          self.collection = originalCollection;
+        } else {
+          self.collection = new oj.Collection(originalCollection.filter(filterFunc));
+        }
+        self.dataSource(new oj.CollectionTableDataSource(self.collection));
 
-      //   if (self.currentSort() !== 'default') {
-      //     self.dataSource().sort(sortCriteria[self.currentSort()]);
-      //   }
-      // };
+        if (self.currentSort() !== 'default') {
+          self.dataSource().sort(sortCriteria[self.currentSort()]);
+        }
+      };
 
       self.currentSearch = ko.observable('');
       self.nameFilter = function (model, attr, value) {

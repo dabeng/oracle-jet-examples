@@ -4,7 +4,7 @@
   "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
   "scripts": {
     "start": "ojet serve --livereload",
-    "rest": "node rest/server.js"
+    "rest": "node rest/server.js --id EMPLOYEE_ID --watch"
   },
   "dependencies": {
     "@oracle/oraclejet": "~6.0.0"
@@ -13,7 +13,6 @@
     "@oracle/grunt-oraclejet": "~6.0.0",
     "@oracle/oraclejet-tooling": "~6.0.0",
     "chai": "^4.2.0",
-    "cors": "^2.8.5",
     "grunt": "^1.0.1",
     "json-server": "^0.14.2",
     "load-grunt-config": "0.19.2",

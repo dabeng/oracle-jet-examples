@@ -1,192 +1,171 @@
 {
   "employees": [
     {
-        "EMPLOYEE_ID": 100,
+        "EMPLOYEE_ID": 1,
         "NAME": "Steven King",
         "EMAIL": "SKING",
-        "PHONE_NUMBER": "515.123.4567",
-        "HIRE_DATE": "1987-06-17",
+        "HIRE_DATE": "1987-6-17",
         "SALARY": 24000,
         "DEPARTMENT_ID": 10
     },
     {
-        "EMPLOYEE_ID": 101,
+        "EMPLOYEE_ID": 2,
         "NAME": "Neena Kochhar",
         "EMAIL": "NKOCHHAR",
-        "PHONE_NUMBER": "515.123.4568",
-        "HIRE_DATE": "1989-09-21",
+        "HIRE_DATE": "1989-9-21",
         "SALARY": 17000,
         "DEPARTMENT_ID": 20
     },
     {
-        "EMPLOYEE_ID": 102,
+        "EMPLOYEE_ID":3,
         "NAME": "Lex De Haan",
         "EMAIL": "LDEHAAN",
-        "PHONE_NUMBER": "515.123.4569",
-        "HIRE_DATE": "1993-01-13",
+        "HIRE_DATE": "1993-1-13",
         "SALARY": 17000,
         "DEPARTMENT_ID": 30
     },
     {
-        "EMPLOYEE_ID": 103,
+        "EMPLOYEE_ID": 4,
         "NAME": "Alexander Hunold",
         "EMAIL": "AHUNOLD",
-        "PHONE_NUMBER": "590.423.4567",
-        "HIRE_DATE": "1990-01-03",
+        "HIRE_DATE": "1-3-1990",
         "SALARY": 9000,
         "DEPARTMENT_ID": 40
     },
     {
-        "EMPLOYEE_ID": 104,
+        "EMPLOYEE_ID": 5,
         "NAME": "Bruce Ernst",
         "EMAIL": "BERNST",
-        "PHONE_NUMBER": "590.423.4568",
-        "HIRE_DATE": "1991-05-21",
+        "HIRE_DATE": "5-21-1991",
         "SALARY": 6000,
         "DEPARTMENT_ID": 50
     },
     {
-        "EMPLOYEE_ID": 105,
+        "EMPLOYEE_ID": 6,
         "NAME": "David Austin",
         "EMAIL": "DAUSTIN",
-        "PHONE_NUMBER": "590.423.4569",
         "HIRE_DATE": "1997-06-25",
         "SALARY": 4800,
         "DEPARTMENT_ID": 10
     },
     {
-        "EMPLOYEE_ID": 106,
+        "EMPLOYEE_ID": 7,
         "NAME": "Valli Pataballa",
         "EMAIL": "VPATABAL",
-        "PHONE_NUMBER": "590.423.4560",
         "HIRE_DATE": "1998-02-05",
         "SALARY": 4800,
         "DEPARTMENT_ID": 20
     },
     {
-        "EMPLOYEE_ID": 107,
+        "EMPLOYEE_ID": 8,
         "NAME": "Diana Lorentz",
         "EMAIL": "DLORENTZ",
-        "PHONE_NUMBER": "590.423.5567",
         "HIRE_DATE": "1999-02-07",
         "SALARY": 4200,
         "DEPARTMENT_ID": 30
     },
     {
-        "EMPLOYEE_ID": 108,
+        "EMPLOYEE_ID": 9,
         "NAME": "Nancy Greenberg",
         "EMAIL": "NGREENBE",
-        "PHONE_NUMBER": "515.124.4569",
         "HIRE_DATE": "1994-08-17",
         "SALARY": 12000,
         "DEPARTMENT_ID": 40
     },
     {
-        "EMPLOYEE_ID": 109,
+        "EMPLOYEE_ID": 10,
         "NAME": "Daniel Faviet",
         "EMAIL": "DFAVIET",
-        "PHONE_NUMBER": "515.124.4169",
         "HIRE_DATE": "1994-08-16",
         "SALARY": 9000,
         "DEPARTMENT_ID": 50
     },
     {
-        "EMPLOYEE_ID": 110,
+        "EMPLOYEE_ID": 11,
         "NAME": "John Chen",
         "EMAIL": "JCHEN",
-        "PHONE_NUMBER": "515.124.4269",
         "HIRE_DATE": "1997-09-28",
         "SALARY": 8200,
         "DEPARTMENT_ID": 10
     },
     {
-        "EMPLOYEE_ID": 111,
+        "EMPLOYEE_ID": 12,
         "NAME": "Ismael Sciarra",
         "EMAIL": "ISCIARRA",
-        "PHONE_NUMBER": "515.124.4369",
         "HIRE_DATE": "1997-09-30",
         "SALARY": 7700,
         "DEPARTMENT_ID": 20
     },
     {
-        "EMPLOYEE_ID": 112,
+        "EMPLOYEE_ID": 13,
         "NAME": "Jose Manuel Urman",
         "EMAIL": "JMURMAN",
-        "PHONE_NUMBER": "515.124.4469",
         "HIRE_DATE": "1998-03-07",
         "SALARY": 7800,
         "DEPARTMENT_ID": 30
     },
     {
-        "EMPLOYEE_ID": 113,
+        "EMPLOYEE_ID": 14,
         "NAME": "Luis Popp",
         "EMAIL": "LPOPP",
-        "PHONE_NUMBER": "515.124.4567",
         "HIRE_DATE": "1999-12-07",
         "SALARY": 6900,
         "DEPARTMENT_ID": 40
     },
     {
-        "EMPLOYEE_ID": 114,
+        "EMPLOYEE_ID": 15,
         "NAME": "Den Raphaely",
         "EMAIL": "DRAPHEAL",
-        "PHONE_NUMBER": "515.127.4561",
         "HIRE_DATE": "1994-12-07",
         "SALARY": 11000,
         "DEPARTMENT_ID": 50
     },
     {
-        "EMPLOYEE_ID": 115,
+        "EMPLOYEE_ID": 16,
         "NAME": "Alexander Khoo",
         "EMAIL": "AKHOO",
-        "PHONE_NUMBER": "515.127.4562",
         "HIRE_DATE": "1995-05-18",
         "SALARY": 3100,
         "DEPARTMENT_ID": 10
     },
     {
-        "EMPLOYEE_ID": 116,
+        "EMPLOYEE_ID": 17,
         "NAME": "Shelli Baida",
         "EMAIL": "SBAIDA",
-        "PHONE_NUMBER": "515.127.4563",
         "HIRE_DATE": "1997-12-24",
         "SALARY": 2900,
         "DEPARTMENT_ID": 20
     },
     {
-        "EMPLOYEE_ID": 117,
+        "EMPLOYEE_ID": 18,
         "NAME": "Sigal Tobias",
         "EMAIL": "STOBIAS",
-        "PHONE_NUMBER": "515.127.4564",
         "HIRE_DATE": "1997-07-24",
         "SALARY": 2800,
         "DEPARTMENT_ID": 30
     },
     {
-        "EMPLOYEE_ID": 118,
+        "EMPLOYEE_ID": 19,
         "NAME": "Guy Himuro",
         "EMAIL": "GHIMURO",
-        "PHONE_NUMBER": "515.127.4565",
         "HIRE_DATE": "1998-11-15",
         "SALARY": 2600,
         "DEPARTMENT_ID": 40
     },
     {
-        "EMPLOYEE_ID": 119,
+        "EMPLOYEE_ID": 20,
         "NAME": "Karen Colmenares",
         "EMAIL": "KCOLMENA",
-        "PHONE_NUMBER": "515.127.4566",
         "HIRE_DATE": "1999-08-10",
         "SALARY": 2500,
         "DEPARTMENT_ID": 50
     },
     {
-        "EMPLOYEE_ID": 120,
-        "NAME": "Matthew Weiss",
+        "EMPLOYEE_ID": 21,
+        "NAME": "Jason Dong",
         "EMAIL": "MWEISS",
-        "PHONE_NUMBER": "650.123.1234",
-        "HIRE_DATE": "1996-07-18",
-        "SALARY": 8000,
+        "HIRE_DATE": "2018-07-18",
+        "SALARY": 10000,
         "DEPARTMENT_ID": 10
     }
   ]

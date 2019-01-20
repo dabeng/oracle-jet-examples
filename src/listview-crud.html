@@ -27,26 +27,8 @@
 
         <div id="datagrid-wrapper" class="oj-flex oj-flex-items-pad">  
           <div class="oj-sm-12 oj-lg-6 oj-flex-item">
-<!--             <oj-label for="sortBy" class="oj-label-inline">Sort by:</oj-label>
-            <oj-select-one id="sortBy" value="{{currentSort}}" on-value-changed="[[sortList]]">
-              <oj-option value="default">Employee ID &uparrow;</oj-option>
-              <oj-option value="hdAsc">Hire date &uparrow;</oj-option>
-              <oj-option value="hdDesc">Hire date &downarrow;</oj-option>
-              <oj-option value="salAsc">Salary &uparrow;</oj-option>
-              <oj-option value="salDesc">Salary &downarrow;</oj-option>
-            </oj-select-one>
-            <oj-label for="filterBy" class="oj-label-inline">Filter dept:</oj-label>
-            <oj-select-one id="filterBy" value="{{currentFilter}}" on-value-changed="[[filterList]]">
-              <oj-option value="all">All</oj-option>
-              <oj-option value="10">Administration</oj-option>
-              <oj-option value="20">Marketing</oj-option>
-              <oj-option value="30">Sales</oj-option>
-              <oj-option value="40">Finance</oj-option>
-              <oj-option value="50">Human Resources</oj-option>
-            </oj-select-one> -->
+            <oj-list-view scroll-policy="loadMoreOnScroll" scroll-policy-options.fetch-size="5" id="listview" style="height: 290px;" aria-label="list using collection" data="[[dataSource]]">
             <oj-label for="nameKeyword" class="oj-label-inline">Search name:</oj-label>
-            <oj-input-text id="nameKeyword" value="{{currentSearch}}" on-value-changed="[[searchList]]"></oj-input-text>
-            <oj-list-view id="listview" style="height: 360px;" aria-label="list using collection" data="[[dataSource]]">
               <template slot="itemTemplate">
                 <div class="oj-flex oj-flex-items-pad">
                   <div class="oj-flex-item oj-sm-flex-initial">
@@ -66,10 +48,10 @@
                       <div class="oj-flex-item">
                         <div class="oj-flex oj-sm-flex-items-initial oj-sm-justify-content-space-between">
                           <div class="oj-flex-item">
-                            <span>Joined: <oj-bind-text value="[[dateConverter.format($current.data.HIRE_DATE)]]"></oj-bind-text></span>
+                            <span>Joined: <oj-bind-text value="[[formatDate($current.data.HIRE_DATE)]]"></oj-bind-text></span>
                           </div>
                           <div class="oj-flex-item">
-                            <span>Salary: <oj-bind-text value="[[salaryConverter.format($current.data.SALARY)]]"></oj-bind-text></span>
+                            <span>Salary: <oj-bind-text value="[[formatSalary($current.data.SALARY)]]"></oj-bind-text></span>
                           </div>
                         </div>
                       </div>
@@ -78,7 +60,96 @@
                 </div>
               </template>
             </oj-list-view>
-            <oj-button on-oj-action="[[loadMore]]">load more</oj-button>
+          </div>
+          <div class="oj-sm-12 oj-lg-6 oj-flex-item oj-flex-items-pad">
+            <h4 class="oj-header-border">Filter & Sort Region</h4>
+            <div class="oj-form oj-sm-odd-cols-12 oj-lg-odd-cols-4 oj-lg-labels-inline oj-form-cols oj-form-cols-max2">
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="sortBy">Sort by:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-select-one id="sortBy" value="{{currentSort}}" on-value-changed="[[sortList]]">
+                    <oj-option value="default">Employee ID &uparrow;</oj-option>
+                    <oj-option value="hdAsc">Hire date &uparrow;</oj-option>
+                    <oj-option value="hdDesc">Hire date &downarrow;</oj-option>
+                    <oj-option value="salAsc">Salary &uparrow;</oj-option>
+                    <oj-option value="salDesc">Salary &downarrow;</oj-option>
+                  </oj-select-one>
+                </div>
+              </div>
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="filterBy">Filter dept:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-select-one id="filterBy" value="{{currentFilter}}" on-value-changed="[[filterList]]">
+                    <oj-option value="all">All</oj-option>
+                    <oj-option value="10">Administration</oj-option>
+                    <oj-option value="20">Marketing</oj-option>
+                    <oj-option value="30">Sales</oj-option>
+                    <oj-option value="40">Finance</oj-option>
+                    <oj-option value="50">Human Resources</oj-option>
+                  </oj-select-one>
+                </div>
+              </div>
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="nameKeyword">Search name:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-input-text id="nameKeyword" value="{{currentSearch}}" on-value-changed="[[searchList]]"></oj-input-text>
+                </div>
+              </div>
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="keyword">Global search:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-input-text id="keyword" value="{{currentSearch}}" on-value-changed="[[searchList]]"></oj-input-text>
+                </div>
+              </div>
+            </div>
+            <h4 class="oj-header-border">Action Region</h4>
+            <div class="oj-form oj-sm-odd-cols-12 oj-lg-odd-cols-4 oj-lg-labels-inline oj-form-cols oj-form-cols-max2">
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="name">Name:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-input-text id="name" value="{{name}}"></oj-input-text>
+                </div>
+              </div>
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="hireDate">Hire Date:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-input-date id="hireDate" converter=[[dateConverter]] value="{{hireDate}}" keyboard-edit="disabled"></oj-input-date>
+                </div>
+              </div>
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="department">Department:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-select-one id="department" options="{{deptOptions}}" value="{{department}}"></oj-select-one>
+                </div>
+              </div>
+              <div class="oj-flex">
+                <div class="oj-flex-item">
+                  <oj-label for="salary">Salary:</oj-label>
+                </div>
+                <div class="oj-flex-item">
+                  <oj-input-text id="salary" value="{{salary}}" converter="[[salaryConverter]]"></oj-input-text>
+                </div>
+              </div>
+              <div class="oj-flex oj-sm-justify-content-flex-end">
+                <oj-button on-oj-action="[[add]]">Add</oj-button>
+                <oj-button on-oj-action="[[update]]">Update</oj-button>
+                <oj-button on-oj-action="[[remove]]">Remove</oj-button>
+              </div>
+            </div>
           </div>
         </div>
 
