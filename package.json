@@ -4,7 +4,7 @@
   "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
   "scripts": {
     "start": "ojet serve --livereload",
-    "rest": "node rest/server.js --id EMPLOYEE_ID --watch"
+    "rest": "node rest/server.js --watch"
   },
   "dependencies": {
     "@oracle/oraclejet": "~6.0.0",

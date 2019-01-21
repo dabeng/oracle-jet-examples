@@ -71,7 +71,7 @@ function(oj, ko, $, ArrayDataProvider)
         url: 'http://localhost:3000/employees',
         customURL: function () {
           return {
-            url: 'http://localhost:3000/employees',
+            // url: 'http://localhost:3000/employees',
             data: {
               _start: self.collection.length,
               _limit: 5
@@ -116,7 +116,7 @@ function(oj, ko, $, ArrayDataProvider)
     //build a new model from the observables in the form
     self.buildModel = function () {
       return {
-        'EMPLOYEE_ID': uuidv4(),
+        'id': uuidv4(),
         'NAME': self.name(),
         'HIRE_DATE': self.hireDate(),
         'SALARY': self.salary(),
