@@ -4,7 +4,8 @@
   "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
   "scripts": {
     "start": "ojet serve --livereload",
-    "rest": "node rest/server.js --watch"
+    "rest": "node rest/server.js --watch",
+    "test": "karma start"
   },
   "dependencies": {
     "@oracle/oraclejet": "~6.0.0",
@@ -16,10 +17,23 @@
     "@oracle/oraclejet-tooling": "~6.0.0",
     "chai": "^4.2.0",
     "grunt": "^1.0.1",
+    "karma": "^3.1.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-requirejs": "^1.1.0",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sinon-chai": "^2.0.2",
     "load-grunt-config": "0.19.2",
+    "mocha": "^5.2.0",
     "qunit": "^2.4.1",
     "qunit-reporter-junit": "^1.1.1",
-    "requirejs": "^2.3.6"
+    "requirejs": "^2.3.6",
+    "sinon": "^7.2.3",
+    "sinon-chai": "^3.3.0"
   },
   "engines": {
     "node": ">=0.10.0"
