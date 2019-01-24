@@ -27,7 +27,7 @@
 
         <div id="datagrid-wrapper" class="oj-flex oj-flex-items-pad">  
           <div class="oj-sm-12 oj-lg-6 oj-flex-item">
-            <oj-list-view scroll-policy="loadMoreOnScroll" scroll-policy-options.fetch-size="5" id="listview" style="height: 290px;" aria-label="list using collection" data="[[dataSource]]">
+            <oj-list-view selection-mode="single" on-selection-changed="[[handleSelectionChanged]]" scroll-policy="loadMoreOnScroll" scroll-policy-options.fetch-size="5" id="listview" style="height: 290px;" aria-label="list using collection" data="[[dataSource]]">
             <oj-label for="nameKeyword" class="oj-label-inline">Search name:</oj-label>
               <template slot="itemTemplate">
                 <div class="oj-flex oj-flex-items-pad">

@@ -81,17 +81,21 @@ function(oj, ko, $, ArrayDataProvider)
       });        
       self.dataSource = ko.observable(new oj.CollectionTableDataSource(self.collection));
 
-      self.collection.bind('request', function() {
+      self.collection.on('request', function() {
         console.log('request more data');
       });
 
-      self.collection.bind('sync', function() {
+      self.collection.on('sync', function() {
         console.log('sync');
       });
 
-      self.collection.bind('ready', function() {
+      self.collection.on('ready', function() {
         console.log('ready');
       });
+
+      self.handleSelectionChanged = function (event) {
+        var a = event.detail.value;
+      };
 
     self.name = ko.observable('');
     self.hireDate = ko.observable(oj.IntlConverterUtils.dateToLocalIso(new Date()));
@@ -105,7 +109,7 @@ function(oj, ko, $, ArrayDataProvider)
     ], { keyAttributes: 'value' });
     self.salary = ko.observable(0);
 
-    function uuidv4() {
+    self.uuidv4 = function () {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
@@ -116,7 +120,7 @@ function(oj, ko, $, ArrayDataProvider)
     //build a new model from the observables in the form
     self.buildModel = function () {
       return {
-        'id': uuidv4(),
+        'id': self.uuidv4(),
         'NAME': self.name(),
         'HIRE_DATE': self.hireDate(),
         'SALARY': self.salary(),
@@ -127,7 +131,16 @@ function(oj, ko, $, ArrayDataProvider)
     //add the model to the collection 
     self.add = function () {
       var model = self.buildModel();
-      self.collection.create(model, {wait:true, at:0}).then(function() {
+      self.collection.create(model, {
+        wait:true,
+        at:0,
+        success: function (model, response, options) {
+          console.log('Create operation succeeds');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log('Error in Create: ' + textStatus);
+        }
+      }).then(function() {
         // Jump to last page to show
         var a = 1;
       });
