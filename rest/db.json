@@ -17,21 +17,21 @@
     {
       "id": "646316bd-82ec-4178-b4eb-f4fd6a7af577",
       "NAME": "Lex De Haan",
-      "HIRE_DATE": "1993-1-13",
-      "SALARY": 17000,
+      "HIRE_DATE": "2003-1-13",
+      "SALARY": 19000,
       "DEPARTMENT_ID": 30
     },
     {
       "id": "a35786c2-54e6-4b53-bd0d-f43bf9620ed9",
       "NAME": "Alexander Hunold",
-      "HIRE_DATE": "1-3-1990",
+      "HIRE_DATE": "1990-1-3",
       "SALARY": 9000,
       "DEPARTMENT_ID": 40
     },
     {
       "id": "29722d90-2540-42db-beb3-d67ac7b0c1d6",
       "NAME": "Bruce Ernst",
-      "HIRE_DATE": "5-21-1991",
+      "HIRE_DATE": "1991-5-21",
       "SALARY": 6000,
       "DEPARTMENT_ID": 50
     },
@@ -141,88 +141,11 @@
       "DEPARTMENT_ID": 50
     },
     {
-      "id": 21,
+      "id": "09a421eb-c962-4916-a8f9-c3c8266b6702",
       "NAME": "Jason Dong",
-      "HIRE_DATE": "2018-07-18",
-      "SALARY": 10000,
+      "HIRE_DATE": "2018-07-05",
+      "SALARY": 30000,
       "DEPARTMENT_ID": 10
-    },
-    {
-      "id": "d7f75886-d124-4092-8225-fd32f7b79ee8",
-      "NAME": "aaa",
-      "HIRE_DATE": "2019-01-21",
-      "SALARY": 111,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "9367807e-277f-4a09-bb23-4d2c2bda8643",
-      "NAME": "bbb",
-      "HIRE_DATE": "2019-01-21",
-      "SALARY": 222,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "290dcf4a-c15d-4317-afb4-1edd866df511",
-      "NAME": "ccc",
-      "HIRE_DATE": "2019-01-21",
-      "SALARY": 333,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "53154e6b-80d5-4628-ae29-8a303d8b03a7",
-      "NAME": "ddd",
-      "HIRE_DATE": "2019-01-21",
-      "SALARY": 444,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "d2f096d9-1877-4aa4-b839-f5988e6d17e3",
-      "NAME": "qq",
-      "HIRE_DATE": "2019-01-24",
-      "SALARY": 0,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "df769e48-0450-4bad-bd82-87650eb5d0f5",
-      "NAME": "asdfasdfas",
-      "HIRE_DATE": "2019-01-24",
-      "SALARY": 0,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "3acbbf76-607a-487d-bf87-c85280b71710",
-      "NAME": "wwww",
-      "HIRE_DATE": "2019-01-24",
-      "SALARY": 0,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "c3619fea-cd2d-4939-92d8-7c931912e1bc",
-      "NAME": "rrr",
-      "HIRE_DATE": "2019-01-24",
-      "SALARY": 0,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "157554f2-3c78-45c3-9eb4-d2f7e571f858",
-      "NAME": "esrtq34r3",
-      "HIRE_DATE": "2019-01-24",
-      "SALARY": 0,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "1a7e1e9d-1764-4f7f-a4c6-adf5388928e9",
-      "NAME": "asdfq32r",
-      "HIRE_DATE": "2019-01-24",
-      "SALARY": 0,
-      "DEPARTMENT_ID": 30
-    },
-    {
-      "id": "3fbab8e2-2748-4e82-80c5-f6ef12a5985e",
-      "NAME": "qqqqqqq",
-      "HIRE_DATE": "2019-01-24",
-      "SALARY": 0,
-      "DEPARTMENT_ID": 30
     }
   ]
 }

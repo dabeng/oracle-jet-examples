@@ -70,7 +70,7 @@
                 </div>
                 <div class="oj-flex-item">
                   <oj-select-one id="sortBy" value="{{currentSort}}" on-value-changed="[[sortList]]">
-                    <oj-option value="default">Employee ID &uparrow;</oj-option>
+                    <oj-option value="default">Default</oj-option>
                     <oj-option value="hdAsc">Hire date &uparrow;</oj-option>
                     <oj-option value="hdDesc">Hire date &downarrow;</oj-option>
                     <oj-option value="salAsc">Salary &uparrow;</oj-option>
@@ -98,7 +98,7 @@
                   <oj-label for="nameKeyword">Search name:</oj-label>
                 </div>
                 <div class="oj-flex-item">
-                  <oj-input-text id="nameKeyword" value="{{currentSearch}}" on-value-changed="[[searchList]]"></oj-input-text>
+                  <oj-input-text id="nameKeyword" value="{{currentNameSearch}}" on-value-changed="[[searchList]]"></oj-input-text>
                 </div>
               </div>
               <div class="oj-flex">
@@ -106,7 +106,7 @@
                   <oj-label for="keyword">Global search:</oj-label>
                 </div>
                 <div class="oj-flex-item">
-                  <oj-input-text id="keyword" value="{{currentSearch}}" on-value-changed="[[searchList]]"></oj-input-text>
+                  <oj-input-text id="keyword" value="{{currentGlobalSearch}}" on-value-changed="[[globalSearchList]]"></oj-input-text>
                 </div>
               </div>
             </div>
@@ -117,7 +117,7 @@
                   <oj-label for="name">Name:</oj-label>
                 </div>
                 <div class="oj-flex-item">
-                  <oj-input-text id="name" value="{{name}}"></oj-input-text>
+                  <oj-input-text id="name" value="{{inputName}}"></oj-input-text>
                 </div>
               </div>
               <div class="oj-flex">
@@ -125,7 +125,7 @@
                   <oj-label for="hireDate">Hire Date:</oj-label>
                 </div>
                 <div class="oj-flex-item">
-                  <oj-input-date id="hireDate" converter=[[dateConverter]] value="{{hireDate}}" keyboard-edit="disabled"></oj-input-date>
+                  <oj-input-date id="hireDate" converter=[[dateConverter]] value="{{inputHireDate}}" keyboard-edit="disabled"></oj-input-date>
                 </div>
               </div>
               <div class="oj-flex">
@@ -133,7 +133,7 @@
                   <oj-label for="department">Department:</oj-label>
                 </div>
                 <div class="oj-flex-item">
-                  <oj-select-one id="department" options="{{deptOptions}}" value="{{department}}"></oj-select-one>
+                  <oj-select-one id="department" options="{{deptOptions}}" value="{{inputDepartment}}"></oj-select-one>
                 </div>
               </div>
               <div class="oj-flex">
@@ -141,7 +141,7 @@
                   <oj-label for="salary">Salary:</oj-label>
                 </div>
                 <div class="oj-flex-item">
-                  <oj-input-text id="salary" value="{{salary}}" converter="[[salaryConverter]]"></oj-input-text>
+                  <oj-input-text id="salary" value="{{inputSalary}}" converter="[[salaryConverter]]"></oj-input-text>
                 </div>
               </div>
               <div class="oj-flex oj-sm-justify-content-flex-end">
